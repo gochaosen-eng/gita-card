@@ -44,12 +44,10 @@
 
     <script>
         function openLetter() {
-            document.getElementById('letter').classList.add('show');
-            document.querySelector('.envelope').style.display = 'none';
-            setTimeout(() => {
-                const iframe = document.querySelector('iframe');
-                iframe.contentWindow.postMessage('{"method":"play"}', '*');
-            }, 500);
+    document.getElementById('letter').classList.add('show');
+    document.querySelector('.envelope').style.display = 'none';
+    const audio = document.getElementById('bgm');
+    audio.play().catch(() => {});
         }
         function closeLetter() {
             document.getElementById('letter').classList.remove('show');
