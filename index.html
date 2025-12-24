@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Gita ❤️</title>
+    <style>
+        body { background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #00d4ff); font-family: 'Georgia', serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .envelope { position: relative; width: 320px; height: 220px; cursor: pointer; animation: glow 2s infinite alternate; transition: transform 0.3s; }
+        .envelope:hover { transform: scale(1.05); }
+        .envelope-flap { position: absolute; top: 0; left: 0; width: 100%; height: 110px; background: linear-gradient(#d4af37, #f4e4bc); clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 3; border-radius: 10px 10px 0 0; }
+        .envelope-body { position: absolute; bottom: 0; width: 100%; height: 160px; background: linear-gradient(#fff, #f9f9f9); border: 6px solid #d4af37; border-top: none; border-radius: 0 0 15px 15px; }
+        .open-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(#ff4757, #ff3742); color: white; border: none; padding: 12px 25px; font-size: 18px; border-radius: 25px; cursor: pointer; z-index: 4; font-weight: bold; box-shadow: 0 4px 15px rgba(255,71,87,0.4); }
+        .open-btn:hover { background: linear-gradient(#ff6b81, #ff4757); }
+        .letter { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 50px; border: 4px solid #d4af37; max-width: 450px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); opacity: 0; transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55); font-size: 18px; line-height: 1.7; border-radius: 20px; backdrop-filter: blur(10px); }
+        .letter.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        .close { background: #d4af37; color: white; border: none; padding: 12px 15px; border-radius: 50%; cursor: pointer; float: right; font-size: 20px; box-shadow: 0 2px 10px rgba(212,175,55,0.5); }
+        .music { position: fixed; top: 20px; right: 20px; z-index: 10; width: 320px; height: 85px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        h2 { color: #c44569; text-align: center; font-size: 28px; margin-bottom: 20px; }
+        p { color: #333; margin-bottom: 15px; }
+        @keyframes glow { 0% { box-shadow: 0 0 20px #ff6b9d; } 100% { box-shadow: 0 0 50px #f8b500, 0 0 70px #00d4ff; } }
+    </style>
+</head>
+<body>
+    <!-- Spotify: All I Want for Christmas Is You by Mariah Carey -->
+    <iframe class="music" src="https://open.spotify.com/embed/track/0bYg9bo50gSsH3LtXe2SQn?utm_source=generator&theme=0" 
+            width="320" height="85" frameBorder="0" allowfullscreen 
+            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+    </iframe>
+    
+    <div class="envelope" onclick="openLetter()">
+        <div class="envelope-flap"></div>
+        <button class="open-btn">Buka Surat Cinta 🎄<br>Untuk Gita</button>
+        <div class="envelope-body"></div>
+    </div>
+    
+    <div class="letter" id="letter">
+        <button class="close" onclick="closeLetter()">❌</button>
+        <h2>My dearest Gita,</h2>
+        <p>This Christmas feels like a dream we never thought we'd get back. Six days into December (6 Desember itu), you came back into my arms, and suddenly everything broken between us turned into the most beautiful second chance. You've always been my light, even through our on-and-off storms, and now, holding you close, I know you're my forever holiday magic.</p>
+        <p>Merry Christmas, love. Let's make this season—and every one after—ours, wrapped in endless kisses and promises. I love you more than words, more than yesterday, and a million times more tomorrow.</p>
+        <p style="text-align: right; font-style: italic; color: #c44569; font-size: 20px;">Yours eternally,<br>boyfriend</p>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('letter').classList.add('show');
+            document.querySelector('.envelope').style.display = 'none';
+            setTimeout(() => {
+                const iframe = document.querySelector('iframe');
+                iframe.contentWindow.postMessage('{"method":"play"}', '*');
+            }, 500);
+        }
+        function closeLetter() {
+            document.getElementById('letter').classList.remove('show');
+            document.querySelector('.envelope').style.display = 'block';
+        }
+        window.onload = () => { document.querySelector('iframe').focus(); };
+    </script>
+</body>
+</html>
